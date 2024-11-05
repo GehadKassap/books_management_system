@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
-from ..models import Book, db
+from ..models.book import Book, db
+from ..schemas import book_schema
 
 bp = Blueprint('book', __name__, url_prefix='/books')
 
@@ -7,7 +8,7 @@ bp = Blueprint('book', __name__, url_prefix='/books')
 @bp.route('/', methods=['GET'])
 def get_books():
     books = Book.query.all()
-    return jsonify([book.to_dict() for book in books])
+    return book_schema.jsonify(books), 200
 
 
 @bp.route('/<int:book_id>', methods=['GET'])
@@ -19,11 +20,15 @@ def get_book(book_id):
 @bp.route('/', methods=['POST'])
 def add_book():
     data = request.get_json()
-    new_book = Book(title=data['title'], author=data['author'],
-                    description=data.get('description'))
-    db.session.add(new_book)
+    errors = book_schema.validate(data)
+    if errors:
+        return jsonify(errors), 400
+
+    book = Book(**data)
+    db.session.add(book)
     db.session.commit()
-    return jsonify(new_book.to_dict()), 201
+
+    return book_schema.jsonify(book), 201
 
 
 @bp.route('/<int:book_id>', methods=['PUT'])

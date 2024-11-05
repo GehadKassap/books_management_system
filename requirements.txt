@@ -3,3 +3,5 @@ flask_sqlalchemy
 flask_migrate
 pymysql 
 python-dotenv
+marshmallow 
+marshmallow-sqlalchemy
