@@ -5,3 +5,4 @@ pymysql
 python-dotenv
 marshmallow 
 marshmallow-sqlalchemy
+Flask-JWT-Extended

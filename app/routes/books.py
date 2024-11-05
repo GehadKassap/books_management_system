@@ -1,50 +1,30 @@
-from flask import Blueprint, request, jsonify
-from ..models.book import Book, db
-from ..schemas import book_schema
+from flask import Blueprint
+from ..controllers.book_controller import BookController
+
 
 bp = Blueprint('book', __name__, url_prefix='/books')
 
 
 @bp.route('/', methods=['GET'])
-def get_books():
-    books = Book.query.all()
-    return book_schema.jsonify(books), 200
+def all():
+    return BookController.all()
 
 
 @bp.route('/<int:book_id>', methods=['GET'])
-def get_book(book_id):
-    book = Book.query.get_or_404(book_id)
-    return jsonify(book.to_dict())
+def show(book_id):
+    return BookController.show(book_id)
 
 
 @bp.route('/', methods=['POST'])
-def add_book():
-    data = request.get_json()
-    errors = book_schema.validate(data)
-    if errors:
-        return jsonify(errors), 400
-
-    book = Book(**data)
-    db.session.add(book)
-    db.session.commit()
-
-    return book_schema.jsonify(book), 201
+def create():
+    return BookController.create()
 
 
 @bp.route('/<int:book_id>', methods=['PUT'])
-def update_book(book_id):
-    data = request.get_json()
-    book = Book.query.get_or_404(book_id)
-    book.title = data['title']
-    book.author = data['author']
-    book.description = data.get('description')
-    db.session.commit()
-    return jsonify(book.to_dict())
+def update(book_id):
+    return BookController.update(book_id)
 
 
 @bp.route('/<int:book_id>', methods=['DELETE'])
-def delete_book(book_id):
-    book = Book.query.get_or_404(book_id)
-    db.session.delete(book)
-    db.session.commit()
-    return jsonify(message="Book deleted"), 204
+def delete(book_id):
+    return BookController.delete(book_id)

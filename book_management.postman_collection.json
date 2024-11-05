@@ -1,0 +1,952 @@
+{
+	"info": {
+		"_postman_id": "b58bd443-1b9b-4661-bd04-3d5675c81cc9",
+		"name": "book_management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33960226",
+		"_collection_link": "https://gold-resonance-790460.postman.co/workspace/My-Workspace~03ee70b0-9ecb-418c-8e85-579332c1a82e/collection/33960226-b58bd443-1b9b-4661-bd04-3d5675c81cc9?action=share&source=collection_link&creator=33960226"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"gahodastresscat\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "invalid cred",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"dd\",\r\n    \"password\":\"dddddd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5001/auth/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 13:37:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid username or password!\"\n}"
+						},
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"gahodastresscat\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5001/auth/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 16:20:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "488"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyMzYzMiwianRpIjoiZjc5ZGQ4OGUtNTQ4Zi00MmExLWFlNWYtN2U4OTgwZDcxMjM4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODIzNjMyLCJjc3JmIjoiMTZjZjBhZjEtODRhYS00ZjU4LThlZjctOWFmYzZiMWQ1OTVkIiwiZXhwIjoxNzMwODI0NTMyfQ.48-bTTajaUwCa8h1QIl00W3cFZielJLFhgDBS1UA8xM\",\n    \"message\": \"Login successful!\",\n    \"user\": {\n        \"created_at\": \"2024-11-05T16:00:41\",\n        \"id\": 1,\n        \"updated_at\": \"2024-11-05T16:00:41\",\n        \"username\": \"gahodastresscat\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"gahodastresscat\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register with same cred",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"gehadkassap\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5001/auth/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 13:39:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Username already exists!\"\n}"
+						},
+						{
+							"name": "registered",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"gahodastresscat\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5001/auth/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 14:01:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgxNTI5OSwianRpIjoiZjdkOTczZWEtZmMzMy00YWE1LWI5ZTctZmI0ZmU2MjQ3MGU2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODE1Mjk5LCJjc3JmIjoiMmZjODVjOGItMTJjZS00NmM2LWJjMmQtNWFkNDkzYWJkMTdiIiwiZXhwIjoxNzMwODE2MTk5fQ.mvKwgcAxjjtDYZNA6xkcKj5pgbySk1Pqxijww8-OMbI\",\n    \"user\": {\n        \"created_at\": \"2024-11-05T14:01:39\",\n        \"id\": 1,\n        \"password\": \"scrypt:32768:8:1$5GMlVMeHnP7zWX5E$f6da7820df3afe181920179fcdc9b1ec129ac93e2411a568570200b22eab79696f3105cfcfd93ca4d985651d5983b5\",\n        \"updated_at\": \"2024-11-05T14:01:39\",\n        \"username\": \"gahodastresscat\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "books",
+			"item": [
+				{
+					"name": "all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNTA5MiwianRpIjoiMWMwMTY1MGItNTE0NS00NTA0LTk3NGYtNmEzNmE4MjJlZWYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI1MDkyLCJjc3JmIjoiZGRlYjE2M2UtZDUwNi00ZDM5LThjMzAtZGFlYWY2M2Q0NzAwIiwiZXhwIjoxNzMwODI1OTkyfQ.blGyVAWT_ILWV4zZ2yUvLnR9fMAWZ2f3L_oonZeHjQo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5001/books/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"books",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNTA5MiwianRpIjoiMWMwMTY1MGItNTE0NS00NTA0LTk3NGYtNmEzNmE4MjJlZWYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI1MDkyLCJjc3JmIjoiZGRlYjE2M2UtZDUwNi00ZDM5LThjMzAtZGFlYWY2M2Q0NzAwIiwiZXhwIjoxNzMwODI1OTkyfQ.blGyVAWT_ILWV4zZ2yUvLnR9fMAWZ2f3L_oonZeHjQo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5001/books/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"books",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 16:50:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "374"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"books\": [\n        {\n            \"author\": \"Mariam Ahmed\",\n            \"description\": \"Description for book1\",\n            \"title\": \"Book1\"\n        },\n        {\n            \"author\": \"Mariam Ahmed\",\n            \"description\": \"Description for book2\",\n            \"title\": \"Book2\"\n        },\n        {\n            \"author\": \"Mariam Ahmed\",\n            \"description\": \"Description for book2\",\n            \"title\": \"Book2\"\n        },\n        {\n            \"author\": \"Mariam Ahmed\",\n            \"description\": \"Description for book2\",\n            \"title\": \"Book2\"\n        }\n    ],\n    \"message\": \"Books retrieved successfully!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNTA5MiwianRpIjoiMWMwMTY1MGItNTE0NS00NTA0LTk3NGYtNmEzNmE4MjJlZWYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI1MDkyLCJjc3JmIjoiZGRlYjE2M2UtZDUwNi00ZDM5LThjMzAtZGFlYWY2M2Q0NzAwIiwiZXhwIjoxNzMwODI1OTkyfQ.blGyVAWT_ILWV4zZ2yUvLnR9fMAWZ2f3L_oonZeHjQo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5001/books/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNTA5MiwianRpIjoiMWMwMTY1MGItNTE0NS00NTA0LTk3NGYtNmEzNmE4MjJlZWYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI1MDkyLCJjc3JmIjoiZGRlYjE2M2UtZDUwNi00ZDM5LThjMzAtZGFlYWY2M2Q0NzAwIiwiZXhwIjoxNzMwODI1OTkyfQ.blGyVAWT_ILWV4zZ2yUvLnR9fMAWZ2f3L_oonZeHjQo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5001/books/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"books",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 16:51:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "130"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"book\": {\n        \"author\": \"Mariam Ahmed\",\n        \"description\": \"Description for book1\",\n        \"title\": \"Book1\"\n    },\n    \"message\": \"Book retrieved successfully!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNTA5MiwianRpIjoiMWMwMTY1MGItNTE0NS00NTA0LTk3NGYtNmEzNmE4MjJlZWYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI1MDkyLCJjc3JmIjoiZGRlYjE2M2UtZDUwNi00ZDM5LThjMzAtZGFlYWY2M2Q0NzAwIiwiZXhwIjoxNzMwODI1OTkyfQ.blGyVAWT_ILWV4zZ2yUvLnR9fMAWZ2f3L_oonZeHjQo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Book2\",\r\n    \"author\":\"Mariam Ahmed\",\r\n    \"description\":\"Description for book2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/books/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"books",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNTA5MiwianRpIjoiMWMwMTY1MGItNTE0NS00NTA0LTk3NGYtNmEzNmE4MjJlZWYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI1MDkyLCJjc3JmIjoiZGRlYjE2M2UtZDUwNi00ZDM5LThjMzAtZGFlYWY2M2Q0NzAwIiwiZXhwIjoxNzMwODI1OTkyfQ.blGyVAWT_ILWV4zZ2yUvLnR9fMAWZ2f3L_oonZeHjQo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Book2\",\r\n    \"author\":\"Mariam Ahmed\",\r\n    \"description\":\"Description for book2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5001/books/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"books",
+										""
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 16:48:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "128"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"book\": {\n        \"author\": \"Mariam Ahmed\",\n        \"description\": \"Description for book2\",\n        \"title\": \"Book2\"\n    },\n    \"message\": \"Book created successfully!\"\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNTA5MiwianRpIjoiMWMwMTY1MGItNTE0NS00NTA0LTk3NGYtNmEzNmE4MjJlZWYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI1MDkyLCJjc3JmIjoiZGRlYjE2M2UtZDUwNi00ZDM5LThjMzAtZGFlYWY2M2Q0NzAwIiwiZXhwIjoxNzMwODI1OTkyfQ.blGyVAWT_ILWV4zZ2yUvLnR9fMAWZ2f3L_oonZeHjQo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Book2\",\r\n  \r\n    \"description\":\"Description for book2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5001/books/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"books",
+										""
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 16:48:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"author\": [\n        \"Missing data for required field.\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNjA5MCwianRpIjoiNmQ0OTA1ZGUtYzM3NS00NGQzLWJmNmItNGY3YmZmZDQ3MjE0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI2MDkwLCJjc3JmIjoiNTRlYjQ0NjQtOWRjZi00ZGNiLTgzNmUtMjI0OGRkNzEzOGZmIiwiZXhwIjoxNzMwODI2OTkwfQ.l1soAdU4f0eGwLdDZPFfIum7gKW0Dxk8cUuJhy82fnM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Book2\",\r\n    \"author\":\"Mariam Ahmed updated\",\r\n    \"description\":\"Description for book2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/books/:book_id",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"books",
+								":book_id"
+							],
+							"variable": [
+								{
+									"key": "book_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "updated",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNjA5MCwianRpIjoiNmQ0OTA1ZGUtYzM3NS00NGQzLWJmNmItNGY3YmZmZDQ3MjE0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI2MDkwLCJjc3JmIjoiNTRlYjQ0NjQtOWRjZi00ZGNiLTgzNmUtMjI0OGRkNzEzOGZmIiwiZXhwIjoxNzMwODI2OTkwfQ.l1soAdU4f0eGwLdDZPFfIum7gKW0Dxk8cUuJhy82fnM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Book2\",\r\n    \"author\":\"Mariam Ahmed updated\",\r\n    \"description\":\"Description for book2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5001/books/5",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"books",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 17:03:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "136"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"book\": {\n        \"author\": \"Mariam Ahmed updated\",\n        \"description\": \"Description for book2\",\n        \"title\": \"Book2\"\n    },\n    \"message\": \"Book updated successfully!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNTA5MiwianRpIjoiMWMwMTY1MGItNTE0NS00NTA0LTk3NGYtNmEzNmE4MjJlZWYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI1MDkyLCJjc3JmIjoiZGRlYjE2M2UtZDUwNi00ZDM5LThjMzAtZGFlYWY2M2Q0NzAwIiwiZXhwIjoxNzMwODI1OTkyfQ.blGyVAWT_ILWV4zZ2yUvLnR9fMAWZ2f3L_oonZeHjQo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/books/7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"books",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMDgyNTA5MiwianRpIjoiMWMwMTY1MGItNTE0NS00NTA0LTk3NGYtNmEzNmE4MjJlZWYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMwODI1MDkyLCJjc3JmIjoiZGRlYjE2M2UtZDUwNi00ZDM5LThjMzAtZGFlYWY2M2Q0NzAwIiwiZXhwIjoxNzMwODI1OTkyfQ.blGyVAWT_ILWV4zZ2yUvLnR9fMAWZ2f3L_oonZeHjQo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5001/books/7",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5001",
+									"path": [
+										"books",
+										"7"
+									]
+								}
+							},
+							"status": "NO CONTENT",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.1.2 Python/3.12.6"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 16:59:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}

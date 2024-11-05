@@ -11,6 +11,10 @@ The Book Management System is a web application built with Python and Flask, des
 - **Environment-Based Configuration**: Uses `.env` file for managing sensitive information.
 - **Modular Code Structure**: Organized into distinct modules for models, routes, utilities, and more.
 
+## Quick Note
+
+The project contains postman collection with example for response.
+
 ## Folder Structure
 
 The project is organized as follows:
@@ -19,7 +23,9 @@ The project is organized as follows:
 book_management_system/
 ├── app/
 │   ├── __init__.py           # Initialize the Flask app and configurations
-│   ├── models.py             # Define User and Book models
+│   ├── models/             # Define User and Book models
+│   │   ├── auth.py           # Define user model
+│   │   └── books.py          # Define book model
 │   ├── routes/
 │   │   ├── __init__.py       # Register routes
 │   │   ├── auth.py           # User registration, login, logout
@@ -33,6 +39,7 @@ book_management_system/
 ├── requirements.txt          # List of dependencies
 ├── .env                      # Environment variables for sensitive information
 └── app.py                    # Main app entry point
+└── postman collection        #Example for api's
 ```
 
 ## Getting Started 
